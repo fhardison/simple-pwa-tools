@@ -65,17 +65,17 @@ function FlashcardTool() {
 		ev.preventDefault();
 		let t = state.value;
 		let newVal = t.replace(/\[[^\]]+\]/g, '[ ]');
-		setState({value: state.value, newValue: newVal });
+		setState({	value: state.value, newValue: newVal });
 		copyToClip(newVal);
 	}
 	return (
 		<div align="center">
 			<h1>Flashcard maker</h1>
-			<form onSubmit={this.onSubmit}>
-				<input type="text" value={this.state.value} onInput={this.onInput} />
+			<form onSubmit={onSubmit}>
+				<input type="text" value={state.value} onInput={onInput} />
 				<button type="submit" margin-left="8px;">Set</button>
 			</form>
-			<p><span type="text" class="newlabel">{this.state.newValue}</span></p>
+			<p><span type="text" class="newlabel">{state.newValue}</span></p>
 		</div>
 		);
 }
