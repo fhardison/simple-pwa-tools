@@ -41,27 +41,14 @@ class App extends Component {
 	
 	render() {
 		return (
-			<Router>
-			<div>
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/flashcardTool">Flashcard Tool</Link>
-					</li>
-				</ul>
-				<Switch>
-					<Route path="/flashcardTool">
-						<FlashcardTool />
-					</Route>
-					<Route path="/">
-						<Home />
-					</Route>
-				</Switch>
-			</div>
-
-		</Router>
+			<div align="center">
+			<h1>Flashcard maker</h1>
+			<form onSubmit={this.onSubmit}>
+				<input type="text" value={this.state.value} onInput={this.onInput} />
+				<button type="submit" margin-left="8px;">Set</button>
+			</form>
+			<p><span type="text" class="newlabel">{this.state.newValue}</span></p>
+		</div>
 		);
 	}
 }
@@ -71,8 +58,6 @@ function Home() {
 		<div align="center">
 			<h2>Simple PWA tools</h2>
 			<p>A collection of simple tools written as PWAs.</p>
-
-
 		</div>
 	);
 }
