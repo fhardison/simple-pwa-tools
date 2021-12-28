@@ -3,6 +3,7 @@ import './style';
 import { h, render, Component } from 'preact';
 import { Router } from "preact-router";
 import baseroute from './baseroute';
+import { useState } from 'preact/hooks';
 
 
 function copyToClip(str) {
@@ -19,20 +20,7 @@ function copyToClip(str) {
 };
 
 class App extends Component {
-	state = { value: '', newValue: 'Val' }
 	
-	
-	onInput = ev => {
-		this.setState({ value: ev.target.value});
-	}
-	
-	onSubmit = ev => {
-		ev.preventDefault();
-		let t = this.state.value;
-		let newVal = t.replace(/\[[^\]]+\]/g, '[ ]');
-		this.setState({newValue: newVal });
-		copyToClip(newVal);
-	}
 	
 	render() {
 		return (
@@ -66,6 +54,20 @@ function Home() {
 }
 
 function FlashcardTool() {
+	const [state, setState] = useState({ value: '', newValue: 'Val' });
+	
+	
+	onInput = ev => {
+		setState({ value: ev.target.value, newValue: state.newValue});
+	}
+	
+	onSubmit = ev => {
+		ev.preventDefault();
+		let t = state.value;
+		let newVal = t.replace(/\[[^\]]+\]/g, '[ ]');
+		setState({value: state.value, newValue: newVal });
+		copyToClip(newVal);
+	}
 	return (
 		<div align="center">
 			<h1>Flashcard maker</h1>
