@@ -1,0 +1,20 @@
+html, body {
+	font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+}
+
+div {
+	margin-left:25%;
+	margin-right:25%;
+	width:50%;
+}
+
+.newlabel {
+	background-color: lightgray;
+	min-width:2em;
+	min-height: 1em;
+}
+
+h1 {
+	text-align: center;
+}
