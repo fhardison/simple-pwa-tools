@@ -47,10 +47,10 @@ class App extends Component {
 					<nav>
 						<ul>
 							<li>
-								<Link to={`${baseroute}/`} />
+								<Link to={`${baseroute}/`}>Home</Link>
 							</li>
 							<li>
-								<Link to={`${baseroute}/FlashcardTool`} />
+								<Link to={`${baseroute}/FlashcardTool`}>Flashcard Tool</Link>
 							</li>
 						</ul>
 					</nav>
