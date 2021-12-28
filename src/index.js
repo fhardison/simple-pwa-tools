@@ -1,6 +1,13 @@
 import './style';
 import { h, render, Component } from 'preact';
-
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	useRouteMatch,
+	useParams
+  } from "react-router-dom";
 
 
 function copyToClip(str) {
@@ -34,6 +41,44 @@ class App extends Component {
 	
 	render() {
 		return (
+			<Router>
+			<div>
+				<ul>
+					<li>
+						<Link to="/">Home</Link>
+					</li>
+					<li>
+						<Link to="/flashcardTool">Flashcard Tool</Link>
+					</li>
+				</ul>
+				<Switch>
+					<Route path="/flashcardTool">
+						<FlashcardTool />
+					</Route>
+					<Route path="/">
+						<Home />
+					</Route>
+				</Switch>
+			</div>
+
+		</Router>
+		);
+	}
+}
+
+function Home() {
+	return (
+		<div align="center">
+			<h2>Simple PWA tools</h2>
+			<p>A collection of simple tools written as PWAs.</p>
+
+
+		</div>
+	);
+}
+
+function FlashcardTool() {
+	return (
 		<div align="center">
 			<h1>Flashcard maker</h1>
 			<form onSubmit={this.onSubmit}>
@@ -43,7 +88,6 @@ class App extends Component {
 			<p><span type="text" class="newlabel">{this.state.newValue}</span></p>
 		</div>
 		);
-	}
 }
 
 if (typeof window !== "undefined") {
