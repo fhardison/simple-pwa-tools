@@ -1,14 +1,7 @@
 import 'preact/debug';
 import './style';
 import { h, render, Component } from 'preact';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	useRouteMatch,
-	useParams
-  } from "react-router-dom";
+import { Router } from "preact-router";
 import baseroute from './baseroute';
 
 
@@ -43,29 +36,22 @@ class App extends Component {
 	
 	render() {
 		return (
-			<Router>
-				<div align="center">
-					<nav>
-						<ul>
-							<li>
-								<Link to={`${baseroute}/`}>Home</Link>
-							</li>
-							<li>
-								<Link to={`${baseroute}/FlashcardTool`}>Flashcard Tool</Link>
-							</li>
-						</ul>
-					</nav>
-					<Switch>
-						<Route path={`${baseroute}/`}>
-							<Home />
-						</Route>
-						<Route path={`${baseroute}/FlashcardTool`}>
-							<FlashcardTool />
-						</Route>
-					</Switch>
-				</div>
-		
-			</Router>
+			<div align="center">
+				<nav>
+					<ul>
+						<li>
+							<a to={`${baseroute}/`}>Home</a>
+						</li>
+						<li>
+							<a to={`${baseroute}/FlashcardTool`}>Flashcard Tool</a>
+						</li>
+					</ul>
+				</nav>
+				<Router>
+					<Home path={`${baseroute}/`} />
+					<FlashcardTool path={`${baseroute}/FlashcardTool`} />
+				</Router>
+			</div>
 		);
 	}
 }
