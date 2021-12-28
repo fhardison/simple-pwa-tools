@@ -53,31 +53,33 @@ function Home() {
 	);
 }
 
-function FlashcardTool() {
-	const [state, setState] = useState({ value: '', newValue: 'Val' });
+class FlashcardTool extends Component {
+	state = {value: '', newValue: ''};
 	
 	
 	onInput = ev => {
-		setState({ value: ev.target.value, newValue: state.newValue});
+		this.setState({ value: ev.target.value});
 	}
 	
 	onSubmit = ev => {
 		ev.preventDefault();
-		let t = state.value;
+		let t = this.state.value;
 		let newVal = t.replace(/\[[^\]]+\]/g, '[ ]');
-		setState({	value: state.value, newValue: newVal });
+		this.setState({newValue: newVal});
 		copyToClip(newVal);
 	}
+	render() {
 	return (
 		<div align="center">
 			<h1>Flashcard maker</h1>
-			<form onSubmit={onSubmit}>
-				<input type="text" value={state.value} onInput={onInput} />
+			<form onSubmit={this.onSubmit}>
+				<input type="text" value={this.state.value} onInput={this.onInput} />
 				<button type="submit" margin-left="8px;">Set</button>
 			</form>
-			<p><span type="text" class="newlabel">{state.newValue}</span></p>
+			<p><span type="text" class="newlabel">{this.state.newValue}</span></p>
 		</div>
 		);
+	}
 }
 
 if (typeof window !== "undefined") {
