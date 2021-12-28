@@ -8,6 +8,7 @@ import {
 	useRouteMatch,
 	useParams
   } from "react-router-dom";
+import baseroute from './baseroute';
 
 
 function copyToClip(str) {
@@ -41,14 +42,29 @@ class App extends Component {
 	
 	render() {
 		return (
-			<div align="center">
-			<h1>Flashcard maker</h1>
-			<form onSubmit={this.onSubmit}>
-				<input type="text" value={this.state.value} onInput={this.onInput} />
-				<button type="submit" margin-left="8px;">Set</button>
-			</form>
-			<p><span type="text" class="newlabel">{this.state.newValue}</span></p>
-		</div>
+			<Router>
+				<div align="center">
+					<nav>
+						<ul>
+							<li>
+								<Link to={`${baseroute}/`} />
+							</li>
+							<li>
+								<Link to={`${baseroute}/FlashcardTool`} />
+							</li>
+						</ul>
+					</nav>
+					<Switch>
+						<Route path={`${baseroute}/`}>
+							<Home />
+						</Route>
+						<Route path={`${baseroute}/FlashcardTool`}>
+							<FlashcardTool />
+						</Route>
+					</Switch>
+				</div>
+		
+			</Router>
 		);
 	}
 }
