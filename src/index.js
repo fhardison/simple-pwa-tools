@@ -1,3 +1,4 @@
+import 'preact/debug';
 import './style';
 import { h, render, Component } from 'preact';
 import {
